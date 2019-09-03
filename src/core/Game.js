@@ -77,6 +77,8 @@ var Game = new Class({
          */
         this.config = new Config(config);
 
+        this.config.width = window.innerWidth;
+        this.config.height = window.innerWidth;
         /**
          * A reference to either the Canvas or WebGL Renderer that this Game is using.
          *
@@ -88,7 +90,7 @@ var Game = new Class({
 
         /**
          * A reference to an HTML Div Element used as the DOM Element Container.
-         * 
+         *
          * Only set if `createDOMContainer` is `true` in the game config (by default it is `false`) and
          * if you provide a parent element to insert the Phaser Game inside.
          *
@@ -244,7 +246,7 @@ var Game = new Class({
          * An instance of the base Sound Manager.
          *
          * The Sound Manager is a global system responsible for the playback and updating of all audio in your game.
-         * 
+         *
          * You can disable the inclusion of the Sound Manager in your build by toggling the webpack `FEATURE_SOUND` flag.
          *
          * @name Phaser.Game#sound
@@ -286,7 +288,7 @@ var Game = new Class({
         {
             /**
              * An instance of the Facebook Instant Games Plugin.
-             * 
+             *
              * This will only be available if the plugin has been built into Phaser,
              * or you're using the special Facebook Instant Games custom build.
              *
@@ -604,12 +606,12 @@ var Game = new Class({
 
     /**
      * Returns the current game frame.
-     * 
+     *
      * When the game starts running, the frame is incremented every time Request Animation Frame, or Set Timeout, fires.
      *
      * @method Phaser.Game#getFrame
      * @since 3.16.0
-     * 
+     *
      * @return {number} The current game frame.
      */
     getFrame: function ()
@@ -622,7 +624,7 @@ var Game = new Class({
      *
      * @method Phaser.Game#getTime
      * @since 3.16.0
-     * 
+     *
      * @return {number} The current game timestamp.
      */
     getTime: function ()
@@ -632,11 +634,11 @@ var Game = new Class({
 
     /**
      * Flags this Game instance as needing to be destroyed on the _next frame_, making this an asynchronous operation.
-     * 
+     *
      * It will wait until the current frame has completed and then call `runDestroy` internally.
-     * 
+     *
      * If you need to react to the games eventual destruction, listen for the `DESTROY` event.
-     * 
+     *
      * If you **do not** need to run Phaser again on the same web page you can set the `noReturn` argument to `true` and it will free-up
      * memory being held by the core Phaser plugins. If you do need to create another game instance on the same page, leave this as `false`.
      *
@@ -650,7 +652,7 @@ var Game = new Class({
     destroy: function (removeCanvas, noReturn)
     {
         if (noReturn === undefined) { noReturn = false; }
-        
+
         this.pendingDestroy = true;
 
         this.removeCanvas = removeCanvas;
@@ -693,7 +695,7 @@ var Game = new Class({
         }
 
         this.loop.destroy();
-        
+
         this.pendingDestroy = false;
     }
 
