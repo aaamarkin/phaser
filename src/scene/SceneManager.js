@@ -522,6 +522,8 @@ var SceneManager = new Class({
         }
 
         this.create(scene);
+        var kkeys = scene.input.keyboard.getKeys().map(myFunction);
+        StartCallback.postMessage("kkeys = " + kkeys);
     },
 
     /**
