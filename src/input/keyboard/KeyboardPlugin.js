@@ -709,7 +709,7 @@ var KeyboardPlugin = new Class({
                 {
                     if (KeyMap[code])
                     {
-                        KeydownCallback.postMessage(Events.KEY_DOWN + KeyMap[code]);
+                        KeydownCallback.postMessage(Events.KEY_DOWN + "_" + KeyMap[code]);
 
                         this.emit(Events.KEY_DOWN + KeyMap[code], event);
 
@@ -736,7 +736,7 @@ var KeyboardPlugin = new Class({
                 {
                     if (KeyMap[code])
                     {
-                        KeyupCallback.postMessage(Events.KEY_UP + KeyMap[code]);
+                        KeyupCallback.postMessage(Events.KEY_UP + "_" + KeyMap[code]);
 
                         this.emit(Events.KEY_UP + KeyMap[code], event);
 
@@ -789,6 +789,26 @@ var KeyboardPlugin = new Class({
         return this;
     },
 
+    getKeys: function ()
+    {
+        var keys = this.keys;
+
+        var ret = []
+
+        var counter = 0;
+
+        for (var i = 0; i < keys.length; i++)
+        {
+            //  Because it's a sparsely populated array
+            if (keys[i])
+            {
+                ret[counter] = keys[i];
+                counter = counter + 1;
+            }
+        }
+
+        return ret;
+    },
     /**
      * Shuts this Keyboard Plugin down. This performs the following tasks:
      *

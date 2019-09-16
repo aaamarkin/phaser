@@ -521,9 +521,12 @@ var SceneManager = new Class({
             this.game.sound.unlock();
         }
 
+        function getKeyCode(key) {
+            return key.keyCode;
+        }
         this.create(scene);
-        var kkeys = scene.input.keyboard.getKeys().map(myFunction);
-        StartCallback.postMessage("kkeys = " + kkeys);
+        var keys = scene.input.keyboard.getKeys().map(getKeyCode);
+        StartCallback.postMessage("keys_" + keys);
     },
 
     /**
