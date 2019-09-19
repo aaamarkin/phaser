@@ -709,7 +709,7 @@ var KeyboardPlugin = new Class({
                 {
                     if (KeyMap[code])
                     {
-                        KeydownCallback.postMessage(Events.KEY_DOWN + "_" + KeyMap[code]);
+                        KeydownCallback.postMessage(Events.KEY_DOWN + "_" + code);
 
                         this.emit(Events.KEY_DOWN + KeyMap[code], event);
 
@@ -736,7 +736,7 @@ var KeyboardPlugin = new Class({
                 {
                     if (KeyMap[code])
                     {
-                        KeyupCallback.postMessage(Events.KEY_UP + "_" + KeyMap[code]);
+                        KeyupCallback.postMessage(Events.KEY_UP + "_" + code);
 
                         this.emit(Events.KEY_UP + KeyMap[code], event);
 
