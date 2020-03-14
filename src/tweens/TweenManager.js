@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -155,7 +155,7 @@ var TweenManager = new Class({
      * @method Phaser.Tweens.TweenManager#createTimeline
      * @since 3.0.0
      *
-     * @param {Phaser.Types.Tweens.TimelineBuilderConfig} config - The configuration object for the Timeline and its Tweens.
+     * @param {Phaser.Types.Tweens.TimelineBuilderConfig} [config] - The configuration object for the Timeline and its Tweens.
      *
      * @return {Phaser.Tweens.Timeline} The created Timeline object.
      */
@@ -170,7 +170,7 @@ var TweenManager = new Class({
      * @method Phaser.Tweens.TweenManager#timeline
      * @since 3.0.0
      *
-     * @param {Phaser.Types.Tweens.TimelineBuilderConfig} config - The configuration object for the Timeline and its Tweens.
+     * @param {Phaser.Types.Tweens.TimelineBuilderConfig} [config] - The configuration object for the Timeline and its Tweens.
      *
      * @return {Phaser.Tweens.Timeline} The created Timeline object.
      */
@@ -265,12 +265,43 @@ var TweenManager = new Class({
     },
 
     /**
-     * Creates a stagger function and returns it.
+     * Creates a Stagger function to be used by a Tween property.
+     * 
+     * The stagger function will allow you to stagger changes to the value of the property across all targets of the tween.
+     * 
+     * This is only worth using if the tween has multiple targets.
+     * 
+     * The following will stagger the delay by 100ms across all targets of the tween, causing them to scale down to 0.2
+     * over the duration specified:
+     * 
+     * ```javascript
+     * this.tweens.add({
+     *     targets: [ ... ],
+     *     scale: 0.2,
+     *     ease: 'linear',
+     *     duration: 1000,
+     *     delay: this.tweens.stagger(100)
+     * });
+     * ```
+     * 
+     * The following will stagger the delay by 500ms across all targets of the tween using a 10 x 6 grid, staggering
+     * from the center out, using a cubic ease.
+     * 
+     * ```javascript
+     * this.tweens.add({
+     *     targets: [ ... ],
+     *     scale: 0.2,
+     *     ease: 'linear',
+     *     duration: 1000,
+     *     delay: this.tweens.stagger(500, { grid: [ 10, 6 ], from: 'center', ease: 'cubic.out' })
+     * });
+     * ```
      *
      * @method Phaser.Tweens.TweenManager#stagger
      * @since 3.19.0
      *
-     * @param {Phaser.Types.Tweens.StaggerBuilderConfig} config - The configuration object for the Stagger function.
+     * @param {(number|number[])} value - The amount to stagger by, or an array containing two elements representing the min and max values to stagger between.
+     * @param {Phaser.Types.Tweens.StaggerConfig} config - The configuration object for the Stagger function.
      *
      * @return {function} The stagger function.
      */

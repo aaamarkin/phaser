@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -338,6 +338,16 @@ var Config = new Class({
         this.antialias = GetValue(renderConfig, 'antialias', true);
 
         /**
+         * @const {boolean} Phaser.Core.Config#antialiasGL - Sets the `antialias` property when the WebGL context is created. Setting this value does not impact any subsequent textures that are created, or the canvas style attributes.
+         */
+        this.antialiasGL = GetValue(renderConfig, 'antialiasGL', true);
+
+        /**
+         * @const {string} Phaser.Core.Config#mipmapFilter - Sets the `mipmapFilter` property when the WebGL renderer is created.
+         */
+        this.mipmapFilter = GetValue(renderConfig, 'mipmapFilter', 'LINEAR');
+
+        /**
          * @const {boolean} Phaser.Core.Config#desynchronized - When set to `true` it will create a desynchronized context for both 2D and WebGL. See https://developers.google.com/web/updates/2019/05/desynchronized for details.
          */
         this.desynchronized = GetValue(renderConfig, 'desynchronized', false);
@@ -469,6 +479,11 @@ var Config = new Class({
          * @const {integer} Phaser.Core.Config#loaderTimeout - Optional XHR timeout value, in ms.
          */
         this.loaderTimeout = GetValue(config, 'loader.timeout', 0);
+
+        /**
+         * @const {boolean} Phaser.Core.Config#loaderWithCredentials - Optional XHR withCredentials value.
+         */
+        this.loaderWithCredentials = GetValue(config, 'loader.withCredentials', false);
 
         /*
          * Allows `plugins` property to either be an array, in which case it just replaces

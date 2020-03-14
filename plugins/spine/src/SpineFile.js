@@ -39,11 +39,11 @@ var TextFile = require('../../../src/loader/filetypes/TextFile.js');
  * @constructor
  *
  * @param {Phaser.Loader.LoaderPlugin} loader - A reference to the Loader that is responsible for this file.
- * @param {(string|Phaser.Loader.FileTypes.UnityAtlasFileConfig)} key - The key to use for this file, or a file configuration object.
- * @param {string|string[]} [textureURL] - The absolute or relative URL to load the texture image file from. If undefined or `null` it will be set to `<key>.png`, i.e. if `key` was "alien" then the URL will be "alien.png".
+ * @param {(string|Phaser.Loader.FileTypes.SpineFileConfig)} key - The key to use for this file, or a file configuration object.
+ * @param {string|string[]} [jsonURL] - The absolute or relative URL to load the JSON file from. If undefined or `null` it will be set to `<key>.json`, i.e. if `key` was "alien" then the URL will be "alien.json".
  * @param {string} [atlasURL] - The absolute or relative URL to load the texture atlas data file from. If undefined or `null` it will be set to `<key>.txt`, i.e. if `key` was "alien" then the URL will be "alien.txt".
- * @param {boolean} [preMultipliedAlpha=false] - 
- * @param {XHRSettingsObject} [textureXhrSettings] - An XHR Settings configuration object for the atlas image file. Used in replacement of the Loaders default XHR Settings.
+ * @param {boolean} [preMultipliedAlpha=false] - Do the textures contain pre-multiplied alpha or not?
+ * @param {XHRSettingsObject} [jsonXhrSettings] - An XHR Settings configuration object for the json file. Used in replacement of the Loaders default XHR Settings.
  * @param {XHRSettingsObject} [atlasXhrSettings] - An XHR Settings configuration object for the atlas data file. Used in replacement of the Loaders default XHR Settings.
  */
 var SpineFile = new Class({
@@ -89,11 +89,10 @@ var SpineFile = new Class({
                     key: key,
                     url: atlasURL[i],
                     extension: GetFastValue(config, 'atlasExtension', 'atlas'),
-                    xhrSettings: GetFastValue(config, 'atlasXhrSettings'),
+                    xhrSettings: GetFastValue(config, 'atlasXhrSettings')
                 });
 
                 atlas.cache = cache;
-                // atlas.config.preMultipliedAlpha = preMultipliedAlpha;
 
                 files.push(atlas);
             }
@@ -111,7 +110,6 @@ var SpineFile = new Class({
             {
                 atlas = new TextFile(loader, key + '_' + i, atlasURL[i], atlasXhrSettings);
                 atlas.cache = cache;
-                // atlas.config.preMultipliedAlpha = preMultipliedAlpha;
 
                 files.push(atlas);
             }
@@ -127,8 +125,8 @@ var SpineFile = new Class({
     /**
      * Called by each File when it finishes loading.
      *
-     * @method Phaser.Loader.MultiFile#onFileComplete
-     * @since 3.7.0
+     * @method Phaser.Loader.FileTypes.SpineFile#onFileComplete
+     * @since 3.19.0
      *
      * @param {Phaser.Loader.File} file - The File that has completed processing.
      */
@@ -167,9 +165,9 @@ var SpineFile = new Class({
                 var currentPath = loader.path;
                 var currentPrefix = loader.prefix;
 
-                var baseURL = GetFastValue(config, 'baseURL', currentBaseURL);
-                var path = GetFastValue(config, 'path', currentPath);
-                var prefix = GetFastValue(config, 'prefix', currentPrefix);
+                var baseURL = GetFastValue(config, 'baseURL', this.baseURL);
+                var path = GetFastValue(config, 'path', this.path);
+                var prefix = GetFastValue(config, 'prefix', this.prefix);
                 var textureXhrSettings = GetFastValue(config, 'textureXhrSettings');
 
                 loader.setBaseURL(baseURL);
@@ -180,7 +178,7 @@ var SpineFile = new Class({
                 {
                     var textureURL = textures[i];
 
-                    var key = '_SP_' + textureURL;
+                    var key = 'SP' + this.multiKeyIndex + '_' + textureURL;
 
                     var image = new ImageFile(loader, key, textureURL, textureXhrSettings);
 
@@ -201,7 +199,7 @@ var SpineFile = new Class({
      * Adds this file to its target cache upon successful loading and processing.
      *
      * @method Phaser.Loader.FileTypes.SpineFile#addToCache
-     * @since 3.16.0
+     * @since 3.19.0
      */
     addToCache: function ()
     {
@@ -213,7 +211,7 @@ var SpineFile = new Class({
 
             var atlasCache;
             var atlasKey = '';
-            var combinedAtlastData = '';
+            var combinedAtlasData = '';
             var preMultipliedAlpha = (this.config.preMultipliedAlpha) ? true : false;
 
             for (var i = 1; i < this.files.length; i++)
@@ -226,19 +224,21 @@ var SpineFile = new Class({
 
                     atlasCache = file.cache;
 
-                    combinedAtlastData = combinedAtlastData.concat(file.data);
+                    combinedAtlasData = combinedAtlasData.concat(file.data);
                 }
                 else
                 {
-                    var key = file.key.substr(4).trim();
-   
+                    var src = file.key.trim();
+                    var pos = src.indexOf('_');
+                    var key = src.substr(pos + 1);
+       
                     this.loader.textureManager.addImage(key, file.data);
                 }
 
                 file.pendingDestroy();
             }
 
-            atlasCache.add(atlasKey, { preMultipliedAlpha: preMultipliedAlpha, data: combinedAtlastData });
+            atlasCache.add(atlasKey, { preMultipliedAlpha: preMultipliedAlpha, data: combinedAtlasData });
 
             this.complete = true;
         }

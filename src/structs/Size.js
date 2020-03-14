@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -219,7 +219,7 @@ var Size = new Class({
      * 
      * To clear the parent call this method with no arguments.
      * 
-     * The parent influences the maximum extents to which this Size compoent can expand,
+     * The parent influences the maximum extents to which this Size component can expand,
      * based on the aspect mode:
      * 
      * NONE - The parent clamps both the width and height.
@@ -482,7 +482,6 @@ var Size = new Class({
         if ((fit && this.aspectRatio > newRatio) || (!fit && this.aspectRatio < newRatio))
         {
             //  We need to change the height to fit the width
-            // height = width / this.aspectRatio;
 
             width = SnapFloor(width, snap.x);
 
@@ -499,7 +498,6 @@ var Size = new Class({
         else if ((fit && this.aspectRatio < newRatio) || (!fit && this.aspectRatio > newRatio))
         {
             //  We need to change the width to fit the height
-            // width = height * this.aspectRatio;
 
             height = SnapFloor(height, snap.y);
 
@@ -542,7 +540,7 @@ var Size = new Class({
     },
 
     /**
-     * The current `width` and `height` are adjusted so that they fully envlop the given dimensions, while keeping the aspect ratio.
+     * The current `width` and `height` are adjusted so that they fully envelope the given dimensions, while keeping the aspect ratio.
      * 
      * The size may extend further out than the target area if the aspect ratios differ.
      * 

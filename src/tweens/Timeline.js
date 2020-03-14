@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -274,17 +274,15 @@ var Timeline = new Class({
      * @method Phaser.Tweens.Timeline#dispatchTimelineEvent
      * @since 3.19.0
      *
-     * @param {Phaser.Tweens.Events} event - The Event to be dispatched.
+     * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {function} callback - The callback to be invoked. Can be `null` or `undefined` to skip invocation.
      */
     dispatchTimelineEvent: function (event, callback)
     {
-        this.emit(event, this, this.targets);
+        this.emit(event, this);
 
         if (callback)
         {
-            callback.params[1] = this.targets;
-
             callback.func.apply(callback.scope, callback.params);
         }
     },

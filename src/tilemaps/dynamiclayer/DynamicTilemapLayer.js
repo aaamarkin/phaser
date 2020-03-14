@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -961,18 +961,22 @@ var DynamicTilemapLayer = new Class({
      * single numeric index or an array of indexes: [2, 3, 15, 20]. The `collides` parameter controls if
      * collision will be enabled (true) or disabled (false).
      *
+     * If no layer specified, the map's current layer is used.
+     *
      * @method Phaser.Tilemaps.DynamicTilemapLayer#setCollision
      * @since 3.0.0
      *
      * @param {(integer|array)} indexes - Either a single tile index, or an array of tile indexes.
      * @param {boolean} [collides=true] - If true it will enable collision. If false it will clear collision.
      * @param {boolean} [recalculateFaces=true] - Whether or not to recalculate the tile faces after the update.
+     * @param {boolean} [updateLayer=true] - If true, updates the current tiles on the layer. Set to
+     * false if no tiles have been placed for significant performance boost.
      *
-     * @return {Phaser.Tilemaps.DynamicTilemapLayer} This Tilemap Layer object.
+     * @return {?Phaser.Tilemaps.Tilemap} Return this Tilemap object, or null if the layer given was invalid.
      */
-    setCollision: function (indexes, collides, recalculateFaces)
+    setCollision: function (indexes, collides, recalculateFaces, updateLayer)
     {
-        TilemapComponents.SetCollision(indexes, collides, recalculateFaces, this.layer);
+        TilemapComponents.SetCollision(indexes, collides, recalculateFaces, this.layer, updateLayer);
 
         return this;
     },
@@ -1216,7 +1220,7 @@ var DynamicTilemapLayer = new Class({
 
     /**
      * Randomizes the indexes of a rectangular region of tiles (in tile coordinates) within the
-     * specified layer. Each tile will recieve a new index. New indexes are drawn from the given
+     * specified layer. Each tile will receive a new index. New indexes are drawn from the given
      * weightedIndexes array. An example weighted array:
      *
      * [

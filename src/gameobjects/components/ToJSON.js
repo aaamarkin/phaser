@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -37,7 +37,6 @@ var ToJSON = function (gameObject)
         rotation: gameObject.rotation,
         alpha: gameObject.alpha,
         visible: gameObject.visible,
-        scaleMode: gameObject.scaleMode,
         blendMode: gameObject.blendMode,
         textureKey: '',
         frameKey: '',

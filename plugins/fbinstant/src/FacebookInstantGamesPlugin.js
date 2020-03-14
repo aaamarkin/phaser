@@ -387,7 +387,7 @@ var FacebookInstantGamesPlugin = new Class({
             {
                 this.hasLoaded = true;
 
-                FBInstant.startGameAsync().then(this.gameStarted.bind(this));
+                FBInstant.startGameAsync().then(this.gameStartedHandler.bind(this));
             }
             
         }, this);
@@ -408,6 +408,27 @@ var FacebookInstantGamesPlugin = new Class({
      * @since 3.13.0
      */
     gameStarted: function ()
+    {
+        if (!this.hasLoaded)
+        {
+            this.hasLoaded = true;
+
+            FBInstant.startGameAsync().then(this.gameStartedHandler.bind(this));
+        }
+        else
+        {
+            this.gameStartedHandler();
+        }
+    },
+
+    /**
+     * The internal gameStarted handler.
+     * 
+     * @method Phaser.FacebookInstantGamesPlugin#gameStartedHandler
+     * @private
+     * @since 3.20.0
+     */
+    gameStartedHandler: function ()
     {
         var APIs = FBInstant.getSupportedAPIs();
 
@@ -1309,14 +1330,33 @@ var FacebookInstantGamesPlugin = new Class({
     },
 
     /**
+     * A filter that may be applied to a Context Choose operation.
+     * 
+     * 'NEW_CONTEXT_ONLY' - Prefer to only surface contexts the game has not been played in before.
+     * 'INCLUDE_EXISTING_CHALLENGES' - Include the "Existing Challenges" section, which surfaces actively played-in contexts that the player is a part of.
+     * 'NEW_PLAYERS_ONLY' - In sections containing individuals, prefer people who have not played the game.
+     * 
+     * @typedef {string} ContextFilter
+     */
+
+    /**
+     * A configuration object that may be applied to a Context Choose operation.
+     * 
+     * @typedef {object} ChooseContextConfig
+     * @property {ContextFilter[]} [filters] - The set of filters to apply to the context suggestions: 'NEW_CONTEXT_ONLY', 'INCLUDE_EXISTING_CHALLENGES' or 'NEW_PLAYERS_ONLY'.
+     * @property {number} [maxSize] - The maximum number of participants that a suggested context should ideally have.
+     * @property {number} [minSize] - The minimum number of participants that a suggested context should ideally have.
+     */
+
+    /**
      * Opens a context selection dialog for the player. If the player selects an available context,
      * the client will attempt to switch into that context, and emit the `choose` event if successful.
      * Otherwise, if the player exits the menu or the client fails to switch into the new context, the `choosefail` event will be emitted.
-     *
+     * 
      * @method Phaser.FacebookInstantGamesPlugin#chooseContext
      * @since 3.13.0
      * 
-     * @param {string} contextID - The ID of the desired context.
+     * @param {ChooseContextConfig} [options] - An object specifying conditions on the contexts that should be offered.
      * 
      * @return {this} This Facebook Instant Games Plugin instance.
      */
@@ -1627,7 +1667,7 @@ var FacebookInstantGamesPlugin = new Class({
     /**
      * Informs Facebook of a custom update that occurred in the game.
      * This will temporarily yield control to Facebook and Facebook will decide what to do based on what the update is.
-     * Once Facebook returns control to the game the plugin will emit an `update` or `upatefail` event.
+     * Once Facebook returns control to the game the plugin will emit an `update` or `updatefail` event.
      * 
      * It makes an async call to the API, so the result isn't available immediately.
      * 
@@ -1665,7 +1705,7 @@ var FacebookInstantGamesPlugin = new Class({
     /**
      * Informs Facebook of a leaderboard update that occurred in the game.
      * This will temporarily yield control to Facebook and Facebook will decide what to do based on what the update is.
-     * Once Facebook returns control to the game the plugin will emit an `update` or `upatefail` event.
+     * Once Facebook returns control to the game the plugin will emit an `update` or `updatefail` event.
      * 
      * It makes an async call to the API, so the result isn't available immediately.
      * 
@@ -2087,7 +2127,7 @@ var FacebookInstantGamesPlugin = new Class({
         {
             var ad = this.ads[i];
 
-            if (ad.placementID === placementID)
+            if (ad.placementID === placementID && !ad.shown)
             {
                 ad.instance.showAsync().then(function ()
                 {
@@ -2108,6 +2148,8 @@ var FacebookInstantGamesPlugin = new Class({
                     
                     _this.emit('adshowerror', e, ad);
                 });
+
+                break;
             }
         }
 
@@ -2136,7 +2178,7 @@ var FacebookInstantGamesPlugin = new Class({
         {
             var ad = this.ads[i];
 
-            if (ad.placementID === placementID && ad.video)
+            if (ad.placementID === placementID && ad.video && !ad.shown)
             {
                 ad.instance.showAsync().then(function ()
                 {
@@ -2157,6 +2199,8 @@ var FacebookInstantGamesPlugin = new Class({
                     
                     _this.emit('adshowerror', e, ad);
                 });
+
+                break;
             }
         }
 

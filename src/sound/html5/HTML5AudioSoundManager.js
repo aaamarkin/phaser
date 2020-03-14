@@ -1,7 +1,7 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
  * @author       Pavle Goloskokovic <pgoloskokovic@gmail.com> (http://prunegames.com)
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -12,6 +12,15 @@ var HTML5AudioSound = require('./HTML5AudioSound');
 
 /**
  * HTML5 Audio implementation of the Sound Manager.
+ * 
+ * Note: To play multiple instances of the same HTML5 Audio sound, you need to provide an `instances` value when
+ * loading the sound with the Loader:
+ * 
+ * ```javascript
+ * this.load.audio('explosion', 'explosion.mp3', {
+ *     instances: 2
+ * });
+ * ```
  *
  * @class HTML5AudioSoundManager
  * @extends Phaser.Sound.BaseSoundManager

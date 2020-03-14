@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -250,7 +250,7 @@ var Game = new Class({
          * You can disable the inclusion of the Sound Manager in your build by toggling the webpack `FEATURE_SOUND` flag.
          *
          * @name Phaser.Game#sound
-         * @type {Phaser.Sound.BaseSoundManager}
+         * @type {(Phaser.Sound.NoAudioSoundManager|Phaser.Sound.HTML5AudioSoundManager|Phaser.Sound.WebAudioSoundManager)}
          * @since 3.0.0
          */
         this.sound = null;
@@ -521,6 +521,11 @@ var Game = new Class({
      */
     headlessStep: function (time, delta)
     {
+        if (this.pendingDestroy)
+        {
+            return this.runDestroy();
+        }
+
         var eventEmitter = this.events;
 
         //  Global Managers
@@ -668,11 +673,11 @@ var Game = new Class({
      */
     runDestroy: function ()
     {
+        this.scene.destroy();
+        
         this.events.emit(Events.DESTROY);
 
         this.events.removeAllListeners();
-
-        this.scene.destroy();
 
         if (this.renderer)
         {

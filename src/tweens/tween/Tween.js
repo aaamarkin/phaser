@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -10,6 +10,7 @@ var Events = require('../events');
 var GameObjectCreator = require('../../gameobjects/GameObjectCreator');
 var GameObjectFactory = require('../../gameobjects/GameObjectFactory');
 var TWEEN_CONST = require('./const');
+var MATH_CONST = require('../../math/const');
 
 /**
  * @classdesc
@@ -344,17 +345,21 @@ var Tween = new Class({
         this.callbackScope;
     },
 
-    /**
-     * Returns the current value of the Tween.
+    /**	
+     * Returns the current value of the specified Tween Data.
      *
      * @method Phaser.Tweens.Tween#getValue
      * @since 3.0.0
+     * 
+     * @param {integer} [index=0] - The Tween Data to return the value from.
      *
-     * @return {number} The value of the Tween.
-     */
-    getValue: function ()
+     * @return {number} The value of the requested Tween Data.
+     */	
+    getValue: function (index)
     {
-        return this.data[0].current;
+        if (index === undefined) { index = 0; }
+
+        return this.data[index].current;
     },
 
     /**
@@ -429,8 +434,9 @@ var Tween = new Class({
     },
 
     /**
-     * Updates the value of a property of this Tween to a new value, without adjusting the
-     * Tween duration or current progress.
+     * Updates the 'end' value of the given property across all matching targets.
+     * 
+     * Calling this does not adjust the duration of the tween, or the current progress.
      * 
      * You can optionally tell it to set the 'start' value to be the current value (before the change).
      *
@@ -459,8 +465,6 @@ var Tween = new Class({
                 {
                     tweenData.start = tweenData.current;
                 }
-
-                break;
             }
         }
 
@@ -513,7 +517,7 @@ var Tween = new Class({
     calcDuration: function ()
     {
         var maxDuration = 0;
-        var minDelay = Number.MAX_SAFE_INTEGER;
+        var minDelay = MATH_CONST.MAX_SAFE_INTEGER;
 
         var data = this.data;
 
@@ -1228,7 +1232,7 @@ var Tween = new Class({
      * @method Phaser.Tweens.Tween#dispatchTweenDataEvent
      * @since 3.19.0
      *
-     * @param {Phaser.Tweens.Events} event - The Event to be dispatched.
+     * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {function} callback - The callback to be invoked. Can be `null` or `undefined` to skip invocation.
      * @param {Phaser.Types.Tweens.TweenDataConfig} tweenData - The TweenData object that caused this event.
      */
@@ -1236,7 +1240,7 @@ var Tween = new Class({
     {
         if (!this.isSeeking)
         {
-            this.emit(event, this, tweenData.key, tweenData.target);
+            this.emit(event, this, tweenData.key, tweenData.target, tweenData.current, tweenData.previous);
 
             if (callback)
             {
@@ -1253,7 +1257,7 @@ var Tween = new Class({
      * @method Phaser.Tweens.Tween#dispatchTweenEvent
      * @since 3.19.0
      *
-     * @param {Phaser.Tweens.Events} event - The Event to be dispatched.
+     * @param {Phaser.Types.Tweens.Event} event - The Event to be dispatched.
      * @param {function} callback - The callback to be invoked. Can be `null` or `undefined` to skip invocation.
      */
     dispatchTweenEvent: function (event, callback)
@@ -1461,6 +1465,7 @@ var Tween = new Class({
 
                 tweenData.elapsed = elapsed;
                 tweenData.progress = progress;
+                tweenData.previous = tweenData.current;
 
                 if (progress === 1)
                 {

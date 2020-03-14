@@ -1,7 +1,7 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
  * @author       Pavle Goloskokovic <pgoloskokovic@gmail.com> (http://prunegames.com)
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -192,7 +192,7 @@ var BaseSoundManager = new Class({
      * @param {string} key - Asset key for the sound.
      * @param {Phaser.Types.Sound.SoundConfig} [config] - An optional config object containing default sound settings.
      *
-     * @return {Phaser.Types.Sound.AudioSpriteSound} The new audio sprite sound instance.
+     * @return {(Phaser.Sound.HTML5AudioSound|Phaser.Sound.WebAudioSound)} The new audio sprite sound instance.
      */
     addAudioSprite: function (key, config)
     {
@@ -227,8 +227,9 @@ var BaseSoundManager = new Class({
     },
 
     /**
-     * Enables playing sound on the fly without the need to keep a reference to it.
-     * Sound will auto destroy once its playback ends.
+     * Adds a new sound to the sound manager and plays it.
+     * The sound will be automatically removed (destroyed) once playback ends.
+     * This lets you play a new sound on the fly without the need to keep a reference to it.
      *
      * @method Phaser.Sound.BaseSoundManager#play
      * @listens Phaser.Sound.Events#COMPLETE
@@ -505,7 +506,7 @@ var BaseSoundManager = new Class({
 
         this.sounds.forEach(function (sound, index)
         {
-            if (!sound.pendingRemove)
+            if (sound && !sound.pendingRemove)
             {
                 callback.call(scope || _this, sound, index, _this.sounds);
             }

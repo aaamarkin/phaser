@@ -2,6 +2,11 @@
 
 ![Phaser Header](https://phaser.io/images/github/300/phaser-header.png "Phaser 3 Header Banner")
 
+[![Discord chat](https://img.shields.io/discord/244245946873937922?style=for-the-badge)](https://discord.gg/phaser)
+[![Twitter Follow](https://img.shields.io/twitter/follow/phaser_?style=for-the-badge)](https://twitter.com/phaser_)
+![GitHub All Releases](https://img.shields.io/github/downloads/photonstorm/phaser/total?style=for-the-badge)
+![npm](https://img.shields.io/npm/dy/phaser?label=npm&style=for-the-badge)
+
 Phaser is a fast, free, and fun open source HTML5 game framework that offers WebGL and Canvas rendering across desktop and mobile web browsers. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.
 
 Along with the fantastic open source community, Phaser is actively developed and maintained by [Photon Storm](http://www.photonstorm.com). As a result of rapid support, and a developer friendly API, Phaser is currently one of the [most starred](https://github.com/collections/javascript-game-engines) game frameworks on GitHub.
@@ -12,7 +17,7 @@ Thousands of developers from indie and multi-national digital agencies, and univ
 **Learn:** [API Docs](https://photonstorm.github.io/phaser3-docs/index.html), [Support Forum][forum] and [StackOverflow](https://stackoverflow.com/questions/tagged/phaser-framework)<br />
 **Code:** 1700+ [Examples](https://phaser.io/examples) (source available in this [repo][examples])<br />
 **Read:** The [Phaser World](#newsletter) Newsletter<br />
-**Chat:** [Slack](https://phaser.io/community/slack) and [Discord](https://phaser.io/community/discord)<br />
+**Chat:** [Discord](https://phaser.io/community/discord) and [Slack](https://phaser.io/community/slack)<br />
 **Extend:** With [Phaser Plugins](https://phaser.io/shop/plugins)<br />
 **Be awesome:** [Support](#support) the future of Phaser<br />
 
@@ -22,23 +27,21 @@ Grab the source and join the fun!
 
 <div align="center"><img src="https://phaser.io/images/github/news.jpg"></div>
 
-> 20th June 2019
+> 15th January 2020
 
-After another month of hard work, we're very happy to announce the release of Phaser 3.18. In this release we took the time to rewrite large chunks of the Input API. This allowed us to fix a number of issues that had arisen, as well as optimizing the internal event flow. Native support for complete Multi-Touch support, Mouse Wheels and more advanced Pointer Button handling are now available. The whole API is smaller and tidier after the clean-up, which is always a good thing.
+We're excited to announce the release of Phaser 3.22, the first of many in the year 2020. The main focus of 3.22 is all the work we've done on Matter Physics integration. Matter has been supported in Phaser since the first release, yet there were lots of things we wanted to do with it to make development life easier. 3.22 brings all of these to the front, including powerful new visual debugging options such as rendering contacts, velocity, the broadphase grid, sensors, joints and more. Matter also now has 100% JSDoc and TypeScripy coverage and I spent a long time rebuilding the TypeScript defs by hand, in order to make them as accurate as possible.
 
-We've also added lots of other features and updates, including better Matter physics constraint handling, Arcade Physics improvements, Audio decoding events, Text justification, new Bounds methods and a lot, lot more. As usual, it doesn't end there, though. You'll find hundreds of great new features, updates and fixes. So, as usual, please do spend some time digging through the [Change Log](#changelog). I assure you, it's worth while :)
+As well as docs and defs there are stacks of handy new methods, including intersection tests such as `intersectPoint`, `intersectRay`, `overlap` and more. New Body level collision callbacks allow you to filter collided pairs a lot more quickly now, combined with new collision events and data type defs to give you all the information you need when resolving. There are now functions to create bodies from SVG data, JSON data or Physics Editor data directly, new Body alignment features and of course bug fixes.
 
-If you're coming from an earlier release then you may not be aware of what the previous release, 3.17, included. It was a huge release, introducing some big new features. The first was that we moved the DOM Element Game Objects from the 'experimental' flag they were previously hidden under, finished them off, fully documented them and moved them to main. DOM Elements are a great way to layer HTML content over the top of your game and control it, just as if it was a standard Game Object. Have a look at the demos, read the docs and get stuck-in using them!
+It's not all about Matter Physics, though. Thanks to the community, there are new Math Distance functions such as Chebyshev, Snake and Squared Points. You can now tint particles as they're emitted, Physics Groups finally let you use your own creation and removal callbacks and plenty more besides. There are, of course, lots of bug fixes too and I've done my best to address some of the most important ones. The documentation has improved yet again and with every release the TypeScript defs get stronger and stronger. So, as usual, please do spend some time digging through the [Change Log](#changelog). I assure you, it's worth while :)
 
-Also brand new in 3.17 were Shader Game Objects. Previously, if you wished to use a custom shader in your game, you'd have to create your own WebGL pipeline to handle it. Now, with 3.17, adding a shader is a single line of code - and what's more, you can manipulate them just like regular Game Objects, so they can be rotated, scaled, have hit areas and so on. As with DOM Elements please see the new examples and read the fully complete API Docs to learn how to use them.
+With 3.22 released I will now be taking some time to carry on with Phaser 4 development, while planning out the 3.23 release as well. Even though Phaser 4 is in build I will fully support Phaser 3 for the foreseeable future. You can follow the development progress of both versions on the Phaser Patreon.
 
-The final significant 3.17 feature came in the way of masks. Phaser 3 has always supported Bitmap and Geometry Masks, but using them was limited (you couldn't mask children inside Containers, for example), and they were pretty slow. After a lot of development they're now fully batched, meaning the same mask applied to thousands of game objects no longer impacts performance. They can also be nested and will restore the mask stack as they're used and what's more, you can now add masks to Cameras. This is a great feature in itself and opens up the possibility for lots of visual effects in your games.
-
-A massive thank-you to everyone who supports Phaser on Patreon and PayPal. Your continued backing has allowed me to work on Phaser all year, and this great new releases is the very real result of that. If you've ever considered becoming a backer, now is the perfect time!
+As usual, I'd like to send a massive thank-you to everyone who supports Phaser on Patreon (and now even GitHub Sponsors, too!) Your continued backing keeps allowing me to work on Phaser full-time and this great new releases is the very real result of that. If you've ever considered becoming a backer, now is the perfect time!
 
 If you'd like to stay abreast of developments then I publish my [Developer Logs](https://phaser.io/phaser3/devlog) in the [Phaser World](https://phaser.io/community/newsletter) newsletter. Subscribe to stay in touch and get all the latest news from the core team and the wider community.
 
-You can also follow Phaser on [Twitter](https://twitter.com/phaser_) and chat with fellow Phaser devs in our [Slack](https://phaser.io/community/slack) and [Discord](https://phaser.io/community/discord) channels.
+You can also follow Phaser on [Twitter](https://twitter.com/phaser_) and chat with fellow Phaser devs in our [Discord](https://phaser.io/community/discord) and [Slack](https://phaser.io/community/slack) channels.
 
 Phaser 3 wouldn't have been possible without the fantastic support of the community and Patreon. Thank you to everyone who supports our work, who shares our belief in the future of HTML5 gaming, and Phaser's role in that.
 
@@ -75,8 +78,9 @@ Extra special thanks to the following companies who's support makes Phaser possi
 * [Texture Packer](https://www.codeandweb.com/texturepacker/tutorials/how-to-create-sprite-sheets-for-phaser3?utm_source=ad&utm_medium=banner&utm_campaign=phaser-2018-10-16)
 * [Twilio](https://www.twilio.com)
 * [Y8 Games](https://www.y8.com)
+* [Poki](https://developers.poki.com/)
 
-![Sponsors](https://phaser.io/images/github/sponsors-2019-05.png "Awesome  Sponsors")
+![Sponsors](https://phaser.io/images/github/sponsors-2019-12.png "Awesome  Sponsors")
 
 ![Phaser Newsletter](https://phaser.io/images/github/div-newsletter.png "Phaser Newsletter")
 
@@ -91,7 +95,7 @@ Over 140 previous editions can be found on our [Back Issues](https://phaser.io/c
 
 Phaser 3 is available via GitHub, npm and CDNs:
 
-* Clone the git repository via [https][clone-http], [ssh][clone-ssh] or with the Github [Windows][clone-ghwin] or [Mac][clone-ghmac] clients.
+* Clone the git repository via [https][clone-http], [ssh][clone-ssh] or with the GitHub [Windows][clone-ghwin] or [Mac][clone-ghmac] clients.
 * Download as [zip](https://github.com/photonstorm/phaser/archive/master.zip)
 * Download the build files: [phaser.js][get-js] and [phaser.min.js][get-minjs]
 
@@ -110,13 +114,13 @@ npm install phaser
 [Phaser is on jsDelivr](https://www.jsdelivr.com/projects/phaser) which is a "super-fast CDN for developers". Include the following in your html:
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/phaser@3.18.1/dist/phaser.js"></script>
+<script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.js"></script>
 ```
 
 or the minified version:
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/phaser@3.18.1/dist/phaser.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.min.js"></script>
 ```
 
 ### API Documentation
@@ -142,7 +146,9 @@ Depending on your project, you may need to add the following to your `tsconfig.j
 ]
 ```
 
-The defs are automatically generated from the JSDoc comments found in the Phaser source code. If you wish to help refine them then you must edit the Phaser JSDoc blocks directly, not the defs file. You can find more details about the parser we built in the `scripts/tsgen` folder.
+We recently published a new [Phaser 3 TypeScript Project Template](https://github.com/photonstorm/phaser3-typescript-project-template), which you can use to get started with if you like.
+
+The TS defs are automatically generated from the JSDoc comments found in the Phaser source code. If you wish to help refine them then you must edit the Phaser JSDoc blocks directly, not the defs file. You can find more details about the parser we built in the `scripts/tsgen` folder.
 
 ### Webpack
 
@@ -197,13 +203,13 @@ We've 3 tutorials related to Facebook Instant Games and Phaser:
 A special build of Phaser with the Facebook Instant Games Plugin ready-enabled is [available on jsDelivr](https://www.jsdelivr.com/projects/phaser). Include the following in your html:
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/phaser@3.18.1/dist/phaser-facebook-instant-games.js"></script>
+<script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser-facebook-instant-games.js"></script>
 ```
 
 or the minified version:
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/phaser@3.18.1/dist/phaser-facebook-instant-games.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser-facebook-instant-games.min.js"></script>
 ```
 
 The build files are in the git repository in the `dist` folder, and you can also include the plugin in custom builds.
@@ -220,7 +226,7 @@ Create an `index.html` page locally and paste the following code into it:
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.18.1/dist/phaser-arcade-physics.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser-arcade-physics.min.js"></script> 
 </head>
 <body>
 
@@ -331,210 +337,257 @@ You can then run `webpack` to create a development build in the `build` folder w
 
 # Change Log
 
-## Version 3.18.1 - Raphtalia - 20th June 2019
+## Version 3.22 - Kohaku - January 15th 2020
 
-### Bug Fixes
+### Matter Physics
 
-* `InputManager.preRender` didn't get the `time` property correctly, causing input plugin methods that relied on it to fail.
-* `KeyboardPlugin.time` wasn't being set to the correct value, causing `checkDown` to fail constantly.
+All of the following are specific to the Matter Physics implementation used by Phaser:
 
-## Version 3.18.0 - Raphtalia - 19th June 2019
+#### Matter Physics New Features
 
-### Input System Changes
+* Matter Physics now has 100% JSDoc coverage! Woohoo :)
+* Matter Physics now has brand new TypeScript defs included in the `types` folder :)
+* `MatterDebugConfig` is a new configuration object that contains all of the following new Matter debug settings:
+* `showAxes`- Render all of the body axes?
+* `showAngleIndicator`- Render just a single body axis?
+* `angleColor`- The color of the body angle / axes lines.
+* `showBroadphase`- Render the broadphase grid?
+* `broadphaseColor`- The color of the broadphase grid.
+* `showBounds`- Render the bounds of the bodies in the world?
+* `boundsColor`- The color of the body bounds.
+* `showVelocity`- Render the velocity of the bodies in the world?
+* `velocityColor`- The color of the body velocity line.
+* `showCollisions`- Render the collision points and normals for colliding pairs.
+* `collisionColor`- The color of the collision points.
+* `showSeparation`- Render lines showing the separation between bodies.
+* `separationColor`- The color of the body separation line.
+* `showBody`- Render the dynamic bodies in the world to the Graphics object?
+* `showStaticBody`- Render the static bodies in the world to the Graphics object?
+* `showInternalEdges`- When rendering bodies, render the internal edges as well?
+* `renderFill`- Render the bodies using a fill color.
+* `renderLine`- Render the bodies using a line stroke.
+* `fillColor`- The color value of the fill when rendering dynamic bodies.
+* `fillOpacity`- The opacity of the fill when rendering dynamic bodies, a value between 0 and 1.
+* `lineColor`- The color value of the line stroke when rendering dynamic bodies.
+* `lineOpacity`- The opacity of the line when rendering dynamic bodies, a value between 0 and 1.
+* `lineThickness`- If rendering lines, the thickness of the line.
+* `staticFillColor`- The color value of the fill when rendering static bodies.
+* `staticLineColor`- The color value of the line stroke when rendering static bodies.
+* `showSleeping`- Render any sleeping bodies (dynamic or static) in the world to the Graphics object?
+* `staticBodySleepOpacity`] - The amount to multiply the opacity of sleeping static bodies by.
+* `sleepFillColor`- The color value of the fill when rendering sleeping dynamic bodies.
+* `sleepLineColor`- The color value of the line stroke when rendering sleeping dynamic bodies.
+* `showSensors`- Render bodies or body parts that are flagged as being a sensor?
+* `sensorFillColor`- The fill color when rendering body sensors.
+* `sensorLineColor`- The line color when rendering body sensors.
+* `showPositions`- Render the position of non-static bodies?
+* `positionSize`- The size of the rectangle drawn when rendering the body position.
+* `positionColor`- The color value of the rectangle drawn when rendering the body position.
+* `showJoint`- Render all world constraints to the Graphics object?
+* `jointColor`- The color value of joints when `showJoint` is set.
+* `jointLineOpacity`- The line opacity when rendering joints, a value between 0 and 1.
+* `jointLineThickness`- The line thickness when rendering joints.
+* `pinSize`- The size of the circles drawn when rendering pin constraints.
+* `pinColor`- The color value of the circles drawn when rendering pin constraints.
+* `springColor`- The color value of spring constraints.
+* `anchorColor`- The color value of constraint anchors.
+* `anchorSize`- The size of the circles drawn as the constraint anchors.
+* `showConvexHulls`- When rendering polygon bodies, render the convex hull as well?
+* `hullColor`- The color value of hulls when `showConvexHulls` is set.
+* `World.renderBody` is a new method that will render a single Matter Body to the given Graphics object. This is used internally during debug rendering but is also public. This allows you to control which bodies are rendered and to which Graphics object, should you wish to use them in-game and not just during debugging.
+* `World.renderConstraint` is a new method that will render a single Matter Constraint, such as a pin or a spring, to the given Graphics object. This is used internally during debug rendering but is also public. This allows you to control which constraints are rendered and to which Graphics object, should you wish to use them in-game and not just during debugging.
+* `World.renderConvexHull` is a new method that will render the convex hull of a single Matter Body, to the given Graphics object. This is used internally during debug rendering but is also public. This allows you to control which hulls are rendered and to which Graphics object, should you wish to use them in-game and not just during debugging.
+* `World.renderGrid` is a new method that will render the broadphase Grid to the given graphics instance.
+* `World.renderBodyBounds` is a new method that will render the bounds of all the given bodies to the given graphics instance.
+* `World.renderBodyAxes` is a new method that will render the axes of all the given bodies to the given graphics instance.
+* `World.renderBodyVelocity` is a new method that will render a velocity line for all the given bodies to the given graphics instance.
+* `World.renderSeparations` is a new method that will render the separations in the current pairs list to the given graphics instance.
+* `World.renderCollisions` is a new method that will render the collision points and normals in the current pairs list to the given graphics instance.
+* `World.getAllBodies` is a new method that will return all bodies in the Matter World.
+* `World.getAllConstraints` is a new method that will return all constraints in the Matter World.
+* `World.getAllComposites` is a new method that will return all composites in the Matter World.
+* `MatterPhysics.composite` is a new reference to the `Matter.Composite` module for easy access from within a Scene.
+* `MatterPhysics.detector` is a new reference to the `Matter.Dectector` module for easy access from within a Scene.
+* `MatterPhysics.grid` is a new reference to the `Matter.Grid` module for easy access from within a Scene.
+* `MatterPhysics.pair` is a new reference to the `Matter.Pair` module for easy access from within a Scene.
+* `MatterPhysics.pairs` is a new reference to the `Matter.Pairs` module for easy access from within a Scene.
+* `MatterPhysics.query` is a new reference to the `Matter.Query` module for easy access from within a Scene.
+* `MatterPhysics.resolver` is a new reference to the `Matter.Resolver` module for easy access from within a Scene.
+* `MatterPhysics.sat` is a new reference to the `Matter.SAT` module for easy access from within a Scene.
+* `MatterPhysics.constraint` is a new reference to the `Matter.Constraint` module for easy access from within a Scene.
+* `MatterPhysics.composites` is a new reference to the `Matter.Composites` module for easy access from within a Scene.
+* `MatterPhysics.axes` is a new reference to the `Matter.Axes` module for easy access from within a Scene.
+* `MatterPhysics.bounds` is a new reference to the `Matter.Bounds` module for easy access from within a Scene.
+* `MatterPhysics.svg` is a new reference to the `Matter.Svg` module for easy access from within a Scene.
+* `MatterPhysics.vector` is a new reference to the `Matter.Vector` module for easy access from within a Scene.
+* `MatterPhysics.vertices` is a new reference to the `Matter.Vertices` module for easy access from within a Scene.
+* `BEFORE_ADD` is a new Event dispatched by `Matter.World` when a Body or Constraint is about to be added to the World.
+* `AFTER_ADD` is a new Event dispatched by `Matter.World` when a Body or Constraint has been added to the World.
+* `BEFORE_REMOVE` is a new Event dispatched by `Matter.World` when a Body or Constraint is about to be removed from the World.
+* `AFTER_REMOVE` is a new Event dispatched by `Matter.World` when a Body or Constraint has been removed from the World.
+* `Body.render.lineOpacity` is a new property on the Matter Body object that allows for custom debug rendering.
+* `Body.render.lineThickness` is a new property on the Matter Body object that allows for custom debug rendering.
+* `Body.render.fillOpacity` is a new property on the Matter Body object that allows for custom debug rendering.
+* `World.setCompositeRenderStyle` is a new method that lets you quickly set the render style values on the children of the given compposite.
+* `World.setBodyRenderStyle` is a new method that lets you quickly set the render style values on the given Body.
+* `World.setConstraintRenderStyle` is a new method that lets you quickly set the render style values on the given Constraint.
+* You can now set `restingThresh` in the Matter Configuration file to adjust the Resolver property.
+* You can now set `restingThreshTangent` in the Matter Configuration file to adjust the Resolver property.
+* You can now set `positionDampen` in the Matter Configuration file to adjust the Resolver property.
+* You can now set `positionWarming` in the Matter Configuration file to adjust the Resolver property.
+* You can now set `frictionNormalMultiplier` in the Matter Configuration file to adjust the Resolver property.
+* `MatterPhysics.containsPoint` is a new method that returns a boolean if any of the given bodies intersect with the given point.
+* `MatterPhysics.intersectPoint` is a new method that checks which bodies intersect with the given point and returns them.
+* `MatterPhysics.intersectRect` is a new method that checks which bodies intersect with the given rectangular area, and returns them. Optionally, it can check which bodies are outside of the area.
+* `MatterPhysics.intersectRay` is a new method that checks which bodies intersect with the given ray segment and returns them. Optionally, you can set the width of the ray.
+* `MatterPhysics.intersectBody` is a new method that checks which bodies intersect with the given body and returns them. If the bodies are set to not collide this can be used as an overlaps check.
+* `MatterPhysics.overlap` is a new method that takes a target body and checks to see if it overlaps with any of the bodies given. If they do, optional `process` and `overlap` callbacks are invoked, passing the overlapping bodies to them, along with additional collision data.
+* `MatterPhysics.setCollisionCategory` is a new method that will set the collision filter category to the value given, on all of the bodies given. This allows you to easily set the category on bodies that don't have a Phaser Matter Collision component.
+* `MatterPhysics.setCollisionGroup` is a new method that will set the collision filter group to the value given, on all of the bodies given. This allows you to easily set the group on bodies that don't have a Phaser Matter Collision component.
+* `MatterPhysics.setCollidesWith` is a new method that will set the collision filter mask to the value given, on all of the bodies given. This allows you to easily set the filter mask on bodies that don't have a Phaser Matter Collision component.
+* `Matter.Body.centerOfMass` is a new vec2 property added to the Matter Body object that retains the center of mass coordinates when the Body is first created, or has parts added to it. These are float values, derived from the body position and bounds.
+* `Matter.Body.centerOffset` is a new vec2 property added to the Matter Body object that retains the center offset coordinates when the Body is first created, or has parts added to it. These are pixel values.
+* `Constraint.pointAWorld` is a new method added to Matter that returns the world-space position of `constraint.pointA`, accounting for `constraint.bodyA`.
+* `Constraint.pointBWorld` is a new method added to Matter that returns the world-space position of `constraint.pointB`, accounting for `constraint.bodyB`.
+* `Body.setCentre` is a new method added to Matter that allows you to set the center of mass of a Body (please note the English spelling of this function.)
+* `Body.scale` is a new read-only vector that holds the most recent scale values as passed to `Body.scale`.
+* `Matter.Bodies.flagCoincidentParts` is a new function that will flags all internal edges (coincident parts) on an array of body parts. This was previously part of the `fromVertices` function, but has been made external for outside use.
+* `Matter.getMatterBodies` is a new function that will return an array of Matter JS Bodies from the given input array, which can be Matter Game Objects, or any class that extends them.
+* `Matter.World.has` is a new method that will take a Matter Body, or Game Object, and search the world for it. If found, it will return `true`.
+* Matter now has the option to use the Runner that it ships with. The Matter Runner operates in two modes: fixed and variable. In the fixed mode, the Matter Engine updates at a fixed delta value every frame (which is what Phaser has used since the first version). In variable mode, the delta will be smoothed and capped each frame to keep the simulation constant, but at the cost of determininism. You can configure the runner by setting the `runner` property in the Matter Config object, both of which are fully covered with JSDocs. As of 3.22 the runner is now used by default in variable (non-fixed) mode. If you wish to return to the previous behavior, set `runner: { isFixed: true }`.
+* `Body.onCollideCallback` is a new Matter Body property that can point to a callback to invoke when the body starts colliding.
+* `Body.onCollideEndCallback` is a new Matter Body property that can point to a callback to invoke when the body stops colliding.
+* `Body.onCollideActiveCallback` is a new Matter Body property that can point to a callback to invoke for the duration the body is colliding.
+* `Body.onCollideWith` is a new Matter Body property that holds a mapping between bodies and collision callbacks.
+* `MatterGameObject.setOnCollide` is a new method available on any Matter Game Object, that sets a callback that is invoked when the body collides with another.
+* `MatterGameObject.setOnCollideEnd` is a new method available on any Matter Game Object, that sets a callback that is invoked when the body stops colliding.
+* `MatterGameObject.setOnCollideActive` is a new method available on any Matter Game Object, that sets a callback which is invoked for the duration of the bodies collision with another.
+* `MatterGameObject.setOnCollideWith` is a new method available on any Matter Game Object, that allows you to set a callback to be invoked whenever the body collides with another specific body, or array of bodies.
+* `Body.gravityScale` is a new vector property that allows you to scale the effect of world gravity on a specific Body.
+* `MatterPhysics._tempVec2` is a new private internal vector used for velocity and force calculations.
+* `MatterPhysics.setVelocity` is a new method that will set both the horizontal and vertical linear velocity of the given physics bodies. This can be used on all Matter bodies, not just those created via the factory.
+* `MatterPhysics.setVelocityX` is a new method that will set the horizontal linear velocity of the given physics bodies. This can be used on all Matter bodies, not just those created via the factory.
+* `MatterPhysics.setVelocityY` is a new method that will set the vertical linear velocity of the given physics bodies. This can be used on all Matter bodies, not just those created via the factory.
+* `MatterPhysics.setAngularVelocity` is a new method that will set the angular velocity of the given physics bodies. This can be used on all Matter bodies, not just those created via the factory.
+* `MatterPhysics.applyForce` is a new method that applies a force to a body, at the bodies current position, including resulting torque. This can be used on all Matter bodies, not just those created via the factory.
+* `MatterPhysics.applyForceFromPosition` is a new method that applies a force to a body from the given world position, including resulting torque. If no angle is given, the current body angle is used. This can be used on all Matter bodies, not just those created via the factory.
+* `MatterPhysics.fromSVG` is a new method that allows you to create a Body from the given SVG path data.
+* The `Matter.Factory.velocity` method has been removed. Please now use `MatterPhysics.setVelocity` instead.
+* The `Matter.Factory.angularVelocity` method has been removed. Please now use `MatterPhysics.setAngularVelocity` instead.
+* The `Matter.Factory.force` method has been removed. Please now use `MatterPhysics.applyForce` instead.
+* `MatterBodyConfig` is a new type def that contains all of the Body configuration properties. This is now used through-out the JSDocs to aid in code-completion.
+* `MatterBodyRenderConfig` is a new type def that contains all of the Body debug rendering configuration properties. This is now used through-out the JSDocs to aid in code-completion.
+* `MatterChamferConfig` is a new type def that contains all of the chamfer configuration properties. This is now used through-out the JSDocs to aid in code-completion.
+* `MatterCollisionFilter` is a new type def that contains all of the collision configuration properties. This is now used through-out the JSDocs to aid in code-completion.
+* `MatterConstraintConfig` is a new type def that contains all of the constraint configuration properties. This is now used through-out the JSDocs to aid in code-completion.
+* `MatterConstraintRenderConfig` is a new type def that contains all of the Constraint debug rendering configuration properties. This is now used through-out the JSDocs to aid in code-completion.
+* `MatterSetBodyConfig` is a new type def that contains all of the Constraint debug rendering configuration properties. This is now used through-out the JSDocs to aid in code-completion.
+* `MatterPhysics.getConstraintLength` is a new method that will return the length of the given constraint, as this is something you cannot get from the constraint properties directly.
+* `MatterPhysics.alignBody` is a new method that will align a Body, or Matter Game Object, against the given coordinates, using the given alignment constant. For example, this allows you to easily position a body to the `BOTTOM_LEFT`, or `TOP_CENTER`, or a coordinate. Alignment is based on the body bounds.
+* `Phaser.Types.Physics.Matter.MatterBody` is a new type def that contains all of the valid Matter Body objects. This is now used through-out the JSDocs to aid in code-completion.
+* `Matter.BodyBounds` is a new class that contains methods to help you extract world coordinates from various points around the bounds of a Matter Body. Because Matter bodies are positioned based on their center of mass, and not a dimension based center, you often need to get the bounds coordinates in order to properly align them in the world. You can access this new class via `this.matter.bodyBounds`.
+* The method signature for `Matter.PhysicsEditorParser.parseBody` has changed. It now takes `(x, y, config, options)` and no longer has `width` and `height` parameters. Please see the updated documentation for more details if you were calling this method directly.
+* `MatterPhysics.fromPhysicsEditor` is a new method that allows you to create a Matter Body based on the given PhysicsEditor shape data. Previously, you could only using PhysicsEditor data with a Matter Game Object, but now you can create a body directly using it.
+* `Matter.PhysicsJSONParser` is a new parser that will create Matter bodies from JSON physics data files. Currently onto the Phaser Physics Tracer app exports in this format, but details are published in the JSDocs, so any app can do so.
+* `Matter.Factory.fromJSON` is a new method that will create a body from a JSON physics data file.
+* The `SetBody` Matter component can now automatically use shapes created in the Phaser Physics Tracer App in the JSON data format.
+* `Matter.Components.Sleep.setToSleep` is a new method available on any Matter Game Object that will send the body to sleep, if Engine sleeping has been enabled.
+* `Matter.Components.Sleep.setAwake` is a new method available on any Matter Game Object that will awake a body from sleep, if Engine sleeping has been enabled.
 
-#### Mouse Wheel Support
+#### Matter Physics Updates
 
-3.18 now includes native support for reading mouse wheel events.
+* The `debug` property in the Matter World Config is now a `MatterDebugConfig` option instead of a boolean. However, if a boolean is given, it will use the default debug config values.
+* The following `MatterWorldConfig` options have now been removed: `debugShowBody`, `debugShowStaticBody`, `debugBodyColor`, `debugBodyFillColor`, `debugStaticBodyColor`, `debugShowJoint`, `debugJointColor`, `debugWireframes`, `debugShowInternalEdges`, `debugShowConvexHulls`, `debugConvexHullColor` and `debugShowSleeping`. These can all be set via the new `MatterDebugConfig` object instead.
+* The object `World.defaults` has been removed. Defaults are now access via `World.debugDefaults`.
+* `World.renderBodies` has been rewritten to cache commonly-used values and avoid a situation when a single body would be rendered twice.
+* The private method `World.renderConvexHulls` has been removed as it's no longer used internally.
+* The private method `World.renderWireframes` has been removed as it's no longer used internally.
+* The method `World.fromPath` has been removed. This was never used internally and you can get the same results by calling `Vertices.fromPath`.
+* The `World.setBounds` argument `thickness` now defaults to 64, not 128, to keep it matching the Matter World Config.
+* The `Body.render.fillStyle` property that existed on the Matter Body object has been removed and replaced with `fillColor`.
+* The `Body.render.strokeStyle` property that existed on the Matter Body object has been removed and replaced with `lineColor`.
+* `Matter.Body.render.sprite.xOffset` and `yOffset` are no longer set to anything when a Body is created. They are left as zero, or you can override them in the Body config, in which case the value is added to the sprite origin offset during a call to `setExistingBody`.
+* The `Matter.Mass.centerOfMass` component property now returns the pre-calculated Body `centerOfMass` property, which is much more accurate than the previous bounds offset value.
+* `Matter.setExistingBody`, which is called interally whenever a Body is set on a Game Object, now uses the new `centerOffset` values to ensure that the texture frame is correctly centered based on the center of mass, not the Body bounds, allowing for much more accurate body to texture mapping with complex multi-part compound bodies.
+* The `Matter.PhysicsEditorParser` has been updated so it no longer needs to set the render offsets, and instead uses the center of mass values.
+* If the `Matter.Body` config doesn't contain a `position` property, it will now default to using `Vertices.centre(body.vertices)` as the position. In most cases, this is what you need, so it saves having to pass it in the config object.
+* Bumped Matter Plugin versions to avoid console logs from Common.info and Common.warn.
+* `PhysicsEditorParser.parseVertices` now uses `Bodies.flagCoincidentParts` to avoid duplicating code.
+* `MatterGameObject` has a new optional boolean constructor parameter `addToWorld` which lets you control if the Body should be added to the world or not. Useful for toggling off should you be merging pre-existing bodies with Game Objects.
+* The `Matter.SetBody.setExistingBody` function, which all Matter Game Objects have, has a new parameter `addToWorld` which allows you to control when the body is added to the Matter world should you not require it immediately. It will also only add the body to the world if it doesn't already exist within it, or any of its composites.
+* `PointerConstraint` has been recoded so that when pressed down, it only polls the World for a body hit test during the next game update. This stops it coming out of sync with the state of the world. Use of the constraint remains the same as before.
+* You can now set `gravity: false` in your Matter Config and it will reset gravity from the defaults to zero.
+* The internal Matter `Composite.setModified` function will now emit a `compositeModified` event, which the Matter World listens for, if debug draw is enabled, so it can update the composite children render styles.
+* `Matter.PhysicsEditorParser.parseBody` can now accept a MatterBodyConfig file as a 4th parameter. This allows you to set Body properties when the body is created, overriding whatever values may have been set in the PhysicsEditor JSON.
 
-* `POINTER_WHEEL` is a new event dispatched by the Input Plugin allowing you to listen for global wheel events.
-* `GAMEOBJECT_WHEEL` is a new event dispatched by the Input Plugin allowing you to listen for global wheel events over all interactive Game Objects in a Scene.
-* `GAMEOBJECT_POINTER_WHEEL` is a new event dispatched by a Game Object allowing you to listen for wheel events specifically on that Game Object.
-* `Pointer.deltaX` is a new property that holds the horizontal scroll amount that occurred due to the user moving a mouse wheel or similar input device.
-* `Pointer.deltaY` is a new property that holds the vertical scroll amount that occurred due to the user moving a mouse wheel or similar input device.
-* `Pointer.deltaZ` is a new property that holds the z-axis scroll amount that occurred due to the user moving a mouse wheel or similar input device.
-* `Pointer.wheel` is a new internal method that handles the wheel event.
-* `InputManager.onMouseWheel` is a new internal method that handles processing the wheel event.
-* `InputManager.processWheelEvent` is a new internal method that handles processing the wheel event sent by the Input Manager.
+#### Matter Physics Bug Fixes
 
-#### Button Released Support
-
-* `Pointer.button` is a new property that indicates which button was pressed, or released, on the pointer during the most recent event. It is only set during `up` and `down` events and is always 0 for Touch inputs.
-* `Pointer.leftButtonReleased` is a new method that returns `true` if it was the left mouse button that was just released. This can be checked in a `pointerup` event handler to find out which button was released.
-* `Pointer.rightButtonReleased` is a new method that returns `true` if it was the right mouse button that was just released. This can be checked in a `pointerup` event handler to find out which button was released (thanks @BobtheUltimateProgrammer)
-* `Pointer.middleButtonReleased` is a new method that returns `true` if it was the middle mouse button that was just released. This can be checked in a `pointerup` event handler to find out which button was released.
-* `Pointer.backButtonReleased` is a new method that returns `true` if it was the back mouse button that was just released. This can be checked in a `pointerup` event handler to find out which button was released.
-* `Pointer.forwardButtonReleased` is a new method that returns `true` if it was the forward mouse button that was just released. This can be checked in a `pointerup` event handler to find out which button was released.
-
-#### Input System Bug Fixes
-
-* Calling `setPollAlways()` would cause the `'pointerdown'` event to fire multiple times. Fix #4541 (thanks @Neyromantik)
-* The pointer events were intermittently not registered, causing `pointerup` to often fail. Fix #4538 (thanks @paulsymphony)
-* Due to a regression in 3.16 the drag events were not performing as fast as before, causing drags to feel lagged. Fix #4500 (thanks @aliblong)
-* The Touch Manager will now listen for Touch Cancel events on the Window object (if `inputWindowEvents` is enabled in the game config, which it is by default). This allows it to prevent touch cancel actions, like opening the dock on iOS, from causing genuinely active pointers to enter an active locked state.
-* Over and Out events now work for any number of pointers in multi-touch environments, not just the first touch pointer registered. They also now fire correctly on touch start and touch end / cancel events.
-* If you enable a Game Object for drag and place it inside a rotated Container (of any depth), the `dragX` and `dragY` values sent to the `drag` callback didn't factor the rotation in, so you had to do it manually. This is now done automatically, so the values account for parent rotation before being sent to the event handler. Fix #4437 (thanks @aliblong)
-
-#### Input System API Changes
-
-The old 'input queue' legacy system, which was deprecated in 3.16, has been removed entirely in order to tidy-up the API and keep input events consistent. This means the following changes:
-
-* Removed the `inputQueue` Game config property.
-* Removed the `useQueue`, `queue` and `_updatedThisFrame` properties from the Input Manager.
-* Removed the `legacyUpdate` and `update` methods from the Input Manager.
-* Removed the `ignoreEvents` property as this should now be handled on a per-event basis.
-* The Input Manager no longer listens for the `GameEvents.POST_STEP` event.
-* The following Input Manager methods are no longer required so have been removed: `startPointer`, `updatePointer`, `stopPointer` and `cancelPointer`.
-
-As a result, all of the following Input Manager methods have been renamed:
-
-* `queueTouchStart` is now called `onTouchStart` and invoked by the Touch Manager.
-* `queueTouchMove` is now called `onTouchMove` and invoked by the Touch Manager.
-* `queueTouchEnd` is now called `onTouchEnd` and invoked by the Touch Manager.
-* `queueTouchCancel` is now called `onTouchCancel` and invoked by the Touch Manager.
-* `queueMouseDown` is now called `onMouseDown` and invoked by the Mouse Manager.
-* `queueMouseMove` is now called `onMouseMove` and invoked by the Mouse Manager.
-* `queueMouseUp` is now called `onMouseUp` and invoked by the Mouse Manager.
-
-Each of these handlers used to check the `enabled` state of the Input Manager, but this now handled directly in the Touch and Mouse Managers instead, leading to less branching and cleaner tests. They also all used to run an IIFE that updated motion on the changed pointers array, but this is now handled directly in the event handler, allowing it to be removed from here.
-
-Because the legacy queue mode is gone, there is no longer any need for the DOM Callbacks:
-
-* Removed the `_hasUpCallback`, `_hasDownCallback` and `_hasMoveCallback` properties from the Input Manager
-* Removed the `processDomCallbacks`, `addDownCallback`, `addUpCallback`, `addMoveCallback`, `domCallbacks`, `addDownCallback`, `addUpCallback` and `addMoveCallback` methods.
-
-Also, CSS cursors can now be set directly:
-
-* Cursors are now set and reset immediately on the canvas, leading to the removal of `_setCursor` and `_customCursor` properties.
-
-The following changes took place in the Input Plugin class:
-
-* The method `processDragEvents` has been removed as it's now split across smaller, more explicit methods.
-* `processDragDownEvent` is a new method that handles a down event for drag enabled Game Objects.
-* `processDragMoveEvent` is a new method that handles a move event for drag enabled Game Objects.
-* `processDragUpEvent` is a new method that handles an up event for drag enabled Game Objects.
-* `processDragStartList` is a new internal method that builds a drag list for a pointer.
-* `processDragThresholdEvent` is a new internal method that tests when a pointer with drag thresholds can drag.
-* `processOverEvents` is a new internal method that handles when a touch pointer starts and checks for over events.
-* `processOutEvents` is a new internal method that handles when a touch pointer stops and checks for out events.
-
-The following changes took place in the Pointer class:
-
-* `Pointer.dirty` has been removed as it's no longer required.
-* `Pointer.justDown` has been removed as it's not used internally and makes no sense under the DOM event system.
-* `Pointer.justUp` has been removed as it's not used internally and makes no sense under the DOM event system.
-* `Pointer.justMoved` has been removed as it's not used internally and makes no sense under the DOM event system.
-* The `Pointer.reset` method has been removed as it's no longer required internally.
-* `Pointer.touchstart` now has two arguments, the Touch List entry and the Touch Event. The full Touch Event is now stored in `Pointer.event` (instead of the Touch List entry).
-* `Pointer.touchmove` now has two arguments, the Touch List entry and the Touch Event. The full Touch Event is now stored in `Pointer.event` (instead of the Touch List entry).
-* `Pointer.touchend` now has two arguments, the Touch List entry and the Touch Event. The full Touch Event is now stored in `Pointer.event` (instead of the Touch List entry).
-* `Pointer.touchcancel` now has two arguments, the Touch List entry and the Touch Event. The full Touch Event is now stored in `Pointer.event` (instead of the Touch List entry).
+* Due to the rewrite of the debug rendering, it is now possible to render _just_ constraints, where-as before this was only possible if bodies were being rendered as well. Fix #4880 (thanks @roberto257)
+* `Matter.PhysicsEditorParser` had a bug where it would allow fixtures with non-clockwise sorted vertices through, which would break pointer constraint interaction with these bodies. The parser now sorts the vertices properly. Fix #4261 (thanks @Sanchez3)
 
 ### New Features
 
-* `Matter.Factory.velocity` is a new method that allows you to set the velocity on a Matter Body directly.
-* `Matter.Factory.angularVelocity` is a new method that allows you to set the angular velocity on a Matter Body directly.
-* `Matter.Factory.force` is a new method that allows you to apply a force from a world position on a Matter Body directly.
-* `GetBounds.getTopCenter` is a new method that will return the top-center point from the bounds of a Game Object.
-* `GetBounds.getBottomCenter` is a new method that will return the bottom-center point from the bounds of a Game Object.
-* `GetBounds.getLeftCenter` is a new method that will return the left-center point from the bounds of a Game Object.
-* `GetBounds.getRightCenter` is a new method that will return the right-center point from the bounds of a Game Object.
-* You can now create a desynchronized 2D or WebGL canvas by setting the Game Config property `desynchronized` to `true` (the default is `false`). For more details about what this means see https://developers.google.com/web/updates/2019/05/desynchronized.
-* The CanvasRenderer can now use the `transparent` Game Config property in order to tell the browser an opaque background is in use, leading to faster rendering in a 2D context.
-* `GameObject.scale` is a new property, that exists as part of the Transform component, that allows you to set the horizontal and vertical scale of a Game Object via a setter, rather than using the `setScale` method. This is handy for uniformly scaling objects via tweens, for example.
-* `Base64ToArrayBuffer` is a new utility function that will convert a base64 string into an ArrayBuffer. It works with plain base64 strings, or those with data uri headers attached to them. The resulting ArrayBuffer can be fed to any suitable function that may need it, such as audio decoding.
-* `ArrayBufferToBase64` is a new utility function that converts an ArrayBuffer into a base64 string. You can also optionally included a media type, such as `image/jpeg` which will result in a data uri being returned instead of a plain base64 string.
-*`WebAudioSoundManager.decodeAudio` is a new method that allows you to decode audio data into a format ready for playback and stored in the audio cache. The audio data can be provided as an ArrayBuffer, a base64 string or a data uri. Listen for the events to know when the data is ready for use.
-* `Phaser.Sound.Events#DECODED` is a new event emitted by the Web Audio Sound Manager when it has finished decoding audio data.
-* `Phaser.Sound.Events#DECODED_ALL` is a new event emitted by the Web Audio Sound Manager when it has finished decoding all of the audio data files passed to the `decodeAudio` method.
-* `Phaser.Utils.Objects.Pick` is a new function that will take an object and an array of keys and return a new object containing just the keys provided in the array.
-* `Text.align` and `Text.setAlign` can now accept `justify` as a type. It will apply basic justification to multi-line text, adding in extra spaces in order to justify the content. Fix #4291 (thanks @andrewbaranov @Donerkebap13 @dude78GH)
-* `Arcade.Events.WORLD_STEP` is a new event you can listen to. It is emitted by the Arcade Physics World every time the world steps once. It is emitted _after_ the bodies and colliders have been updated. Fix #4289 (thanks @fant0m)
+* `TimeStep.smoothStep` is a new boolean property that controls if any delta smoothing takes place during the game step. Delta smoothing has been enabled in Phaser since the first version and helps avoid delta spikes and dips, especially after loss of focus. However, you can now easily toggle if this happens via this property and the corresponding `FPSConfig` property.
+* `Phaser.Math.Distance.BetweenPoints` is a new function that will return the distance between two Vector2-like objects (thanks @samme)
+* `Phaser.Math.Distance.BetweenPointsSquared` is a new function that will return the squared distance between two Vector2-like objects (thanks @samme)
+* `Phaser.Math.Distance.Chebyshev` is a new function that will return the Chebyshev (or chessboard) distance between two Vector2-like objects (thanks @samme)
+* `Phaser.Math.Distance.Snake` is a new function that will return the rectilinear distance between two Vector2-like objects (thanks @samme)
+* `ParticleEmitter.setTint` is a new method that will set the tint of emitted particles for the given Emitter only (thanks @samme)
+* `ParticleEmitter.remove` is a new method that will remove the Emitter from its Emitter Manager (thanks @samme)
+* `ParticleEmitterManager.removeEmitter` is a new method that will remove the given emitter from the manager, if the emitter belongs to it (thanks @samme)
+* `AlphaSingle` is a new Game Object Component that allows a Game Object to set its alpha values, but only as a single uniform value, not on a per-quad basis.
+* `Actions.AlignTo` (in combination with the new `Display.Align.To.QuickSet` function) allows you to align an array of Game Objects so they sit next to each other, one at a time. The first item isn't moved, the second is moved to sit next to the first, and so on. You can align them using any of the alignment constants (thanks @samme)
+* `Scene.Systems.getData` is a new method that will return any data that was sent to the Scene by another Scene, i.e. during a `run` or `launch` command. You can access it via `this.sys.getData()` from within your Scene.
+* `Group.internalCreateCallback` is a new optional callback that is invoked whenever a child is added to a Group. This is the same as `createCallback` except it's only for use by the parent class, allowing a parent to invoke a creation callback and for you to still provide one via the Group config.
+* `Group.internalRemoveCallback` is a new optional callback that is invoked whenever a child is removed from a Group. This is the same as `removeCallback` except it's only for use by the parent class, allowing a parent to invoke a callback and for you to still provide one via the Group config.
 
 ### Updates
 
-* `Zones` will now use the new `customHitArea` property introduced in 3.17 to avoid their hit areas from being resized if you specified your own custom hit area (thanks @rexrainbow)
-* The default `BaseShader` vertex shader has a new uniform `uResolution` which is set during the Shader init and load to be the size of the Game Object to which the shader is bound.
-* The default `BaseShader` vertex shader will now set the `fragCoord` varying to be the Game Object height minus the y inPosition. This will give the correct y axis in the fragment shader, causing 'inverted' shaders to display normally when using the default vertex code.
-* There was some test code left in the `DOMElementCSSRenderer` file that caused `getBoundingClientRect` to be called every render. This has been removed, which increases performance significantly for DOM heavy games.
-* The `TimeStep` will no longer set its `frame` property to zero in the `resetDelta` method. Instead, this property is incremented every step, no matter what, giving an accurate indication of exactly which frame something happened on internally.
-* The `TimeStep.step` method no longer uses the time value passed to the raf callback, as it's not actually the current point in time, but rather the time that the main thread began at. Which doesn't help if we're comparing it to event timestamps.
-* `TimeStep.now` is a new property that holds the exact `performance.now` value, as set at the start of the current game step.
-* `Matter.Factory.fromVertices` can now take a vertices path string as its `vertexSets` argument, as well as an array of vertices.
-* `GetBounds.prepareBoundsOutput` is a new private method that handles processing the output point. All of the bounds methods now use this, allowing us to remove a lot of duplicated code.
-* The PluginManager will now display a console warning if it skips installing a plugin (during boot) because the plugin value is missing or empty (thanks @samme)
-* When creating a Matter Constraint via the Factory you can now optionally provide a `length`. If not given, it will determine the length automatically from the position of the two bodies.
-* When creating a Matter Game Object you can now pass in a pre-created Matter body instead of a config object.
-* When Debug Draw is enabled for Arcade Physics it will now use `Graphics.defaultStrokeWidth` to drawn the body with, this makes static bodies consistent with dynamic ones (thanks @samme)
-* `Group.name` is a new property that allows you to set a name for a Group, just like you can with all other Game Objects. Phaser itself doesn't use this, it's there for you to take advantage of (thanks @samme)
-* Calling `ScaleManager.setGameSize` will now adjust the size of the canvas element as well. Fix #4482 (thanks @sudhirquestai)
-* `Scale.Events.RESIZE` now sends two new arguments to the handler: `previousWidth` and `previousHeight`. If, and only if, the Game Size has changed, these arguments contain the previous size, before the change took place.
-* The Camera Manager has a new method `onSize` which is invoked by handling the Scale Manager `RESIZE` event. When it receives it, it will iterate the cameras it manages. If the camera _doesn't_ have a custom offset and _is_ the size of the game, then it will be automatically resized for you. This means you no longer need to call `this.cameras.resize(width, height)` from within your own resize handler, although you can still do so if you wish, as that will resize _every_ Camera being managed to the new size, instead of just 'full size' cameras.
-* `Graphics.translate` has been renamed to `Graphics.translateCanvas` to make it clearer what it's actually translating (i.e. the drawing buffer, not the Graphics object itself)
-* `Graphics.scale` has been renamed to `Graphics.scaleCanvas` to make it clearer what it's actually scaling (i.e. the drawing buffer, not the Graphics object itself)
-* `Graphics.rotate` has been renamed to `Graphics.rotateCanvas` to make it clearer what it's actually rotating (i.e. the drawing buffer, not the Graphics object itself)
-* The `width` and `height` of an Arc / Circle Shape Game Object is now set to be the diameter of the arc, not the radius (thanks @rexrainbow)
-* `LineStyleCanvas` now takes an `altColor` argument which is used to override the context color.
-* `LineStyleCanvas` now takes an `altAlpha` argument which is used to override the context alpha.
-* `FillStyleCanvas` now takes an `altAlpha` argument which is used to override the context alpha.
-* `StaticPhysicsGroup` can now take a `classType` property in its Group Config and will use the value of it, rather than override it. If none is provided it'll default to `ArcadeSprite`. Fix #4401 (thanks @Legomite)
-* `Phaser.Tilemaps.Parsers.Tiled` used to run the static function `ParseJSONTiled`. `Parsers.Tiled` is now just a namespace, so access the function within it: `Phaser.Tilemaps.Parsers.Tiled.ParseJSONTiled`.
-* `Phaser.Tilemaps.Parsers.Impact` used to run the static function `ParseWeltmeister`. `Parsers.Impact` is now just a namespace, so access the function within it: `Phaser.Tilemaps.Parsers.Impact.ParseWeltmeister`.
-* `Phaser.Tilemaps.Parsers.Tiled.AssignTileProperties` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.Base64Decode` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.BuildTilesetIndex` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseGID` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseImageLayers` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseJSONTiled` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseObject` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseObjectLayers` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseTileLayers` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseTilesets` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.ParseTilesets` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Impact.ParseTileLayers` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Impact.ParseTilesets` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Impact.ParseWeltmeister` is now a public static function, available to be called directly.
-* `Phaser.Tilemaps.Parsers.Tiled.Pick` has been removed. It is now available under `Phaser.Utils.Objects.Pick`, which is a more logical place for it.
-* You can now call `this.scene.remove` at the end of a Scene's `create` method without it throwing an error. Why you'd ever want to do this is beyond me, but you now can (thanks @samme)
-* The `Arcade.StaticBody.setSize` arguments have changed from `(width, height, offsetX, offsetY)` to `(width, height, center)`. They now match Dynamic Body setSize and the Size Component method (thanks @samme)
-* When enabling Arcade Physics Body debug it will now draw only the faces marked for collision, allowing you to easily see if a face is disabled or not (thanks @BdR76)
-* `Transform.getParentRotation` is a new method available to all GameObjects that will return the sum total rotation of all of the Game Objects parent Containers, if it has any.
-* `Tween.restart` now sets the Tween properties `elapsed`, `progress`, `totalElapsed` and `totalProgress` to zero when called, rather than adding to existing values should the tween already be running.
-* `ArcadePhysics.Body.resetFlags` is a new method that prepares the Body for a physics step by resetting the `wasTouching`, `touching` and `blocked` states.
-* `ArcadePhysics.Body.preUpdate` has two new arguments `willStep` and `delta`. If `willStep` is true then the body will call resetFlags, sync with the parent Game Object and then run one iteration of `Body.update`, using the provided delta. If false, only the Game Object sync takes place.
-* `ArcadePhysics.World.update` will now determine if a physics step is going to happen this frame or not. If not, it no longer calls `World.step` (fix #4529, thanks @ampled). If a step _is_ going to happen, then it now handles this with one iteration of the bodies array, instead of two. It has also inlined a single world step, avoiding branching out. If extra world steps are required this frame (such as in high Hz environments) then `World.step` is called accordingly.
-* `ArcadePhysics.World.postUpdate` will no longer call `Body.postUpdate` on all of the bodies if no World step has taken place this frame.
-* `ArcadePhysics.World.step` will now increment the `stepsLastFrame` counter, allowing `postUpdate` to determine if bodies should be processed should World.step have been invoked manually.
+* `Body.deltaXFinal` is a new method on Arcade Physics Bodies that will return the final change in the horizontal position of the body, as based on all the steps that took place this frame. This property is calculated during the `postUpdate` phase, so must be listened for accordingly (thanks Bambosh)
+* `Body.deltaYFinal` is a new method on Arcade Physics Bodies that will return the final change in the vertical position of the body, as based on all the steps that took place this frame. This property is calculated during the `postUpdate` phase, so must be listened for accordingly (thanks Bambosh)
+* `Body._tx` is a new internal private var, holding the Arcade Physics Body combined total delta x value.
+* `Body._ty` is a new internal private var, holding the Arcade Physics Body combined total delta y value.
+* `LineCurve.getUtoTmapping` has been updated to return `u` directly to avoid calculations as it's identical to `t` in a Line (thanks @rexrainbow)
+* `Curve.getSpacedPoints` will now take an optional array as the 3rd parameter to store the points results in (thanks @rexrainbow)
+* Trying to play or resume an audio file with an incorrect key will now throw a runtime error, instead of a console warning (thanks @samme)
+* The `Shape` Game Object now uses the AlphaSingle component, allowing you to uniformly set the alpha of the shape, rather than a quad alpha, which never worked for Shape objects.
+* The `Container` Game Object now uses the AlphaSingle component, allowing you to uniformly set the alpha of the container, rather than a quad alpha, which never worked consistently across Container children. Fix #4916 (thanks @laineus)
+* The `DOMElement` Game Object now uses the AlphaSingle component, allowing you to uniformly set the alpha of the element, rather than a quad alpha, which never worked for these objects.
+* The `Graphics` Game Object now uses the AlphaSingle component, allowing you to uniformly set the alpha of the element, rather than a quad alpha, which never worked for these objects.
+* `TweenData` has a new property called `previous` which holds the eased property value prior to the update.
+* The `TWEEN_UPDATE` event now sends two new parameters to the handler: `current` and `previous` which contain the current and previous property values.
+* During `collideSpriteVsGroup` checks it will now skip bodies that are disabled to save doing a `contains` test (thanks @samme)
+* `Display.Align.In.QuickSet` now accepts `LEFT_BOTTOM` as `BOTTOM_LEFT`, `LEFT_TOP` as `TOP_LEFT`, `RIGHT_BOTTOM` as `BOTTOM_RIGHT` and `RIGHT_TOP` as `TOP_RIGHT`. Fix #4927 (thanks @zaniar)
+* `PhysicsGroup` now uses the new `internalCreateCallback` and `internalRemoveCallback` to handle its body creation and destruction, allowing you to use your own `createCallback` and `removeCallback` as defined in the Group config. Fix #4420 #4657 #4822 (thanks @S4n60w3n @kendistiller @scrubperson)
+* `DOMElement` has a new private method `handleSceneEvent` which will handle toggling the display setting of the element when a Scene sleeps and wakes. A DOM Element will now listen for the Scene sleep and wake events. These event listeners are removed in the `preDestroy` method.
+* A `DOMElement` will now set the display mode to 'none' during its render if the Scene in which it belongs is no longer visible.
 
 ### Bug Fixes
 
-* Tweens created in a paused state couldn't be started by a call to `play`. Fix #4525 (thanks @TonioParis)
-* If both Arcade Physics circle body positions and the delta equaled zero, the `separateCircle` function would cause the position to be set `NaN` (thanks @hizzd)
-* The `CameraManager` would incorrectly destroy the `default` Camera in its shutdown method, meaning that if you used a fixed mask camera and stopped then resumed a Scene, the masks would stop working. The default camera is now destroyed only in the `destroy` method. Fix #4520 (thanks @telinc1)
-* Passing a Frame object to `Bob.setFrame` would fail, as it expected a string or integer. It now checks the type of object, and if a Frame it checks to make sure it's a Frame belonging to the parent Blitter's texture, and if so sets it. Fix #4516 (thanks @NokFrt)
-* The ScaleManager full screen call had an arrow function in it. Despite being within a conditional block of code it still broke really old browsers like IE11, so has been removed. Fix #4530 (thanks @jorbascrumps @CNDW)
-* `Game.getTime` would return `NaN` because it incorrectly accessed the time value from the TimeStep.
-* Text with a `fixedWidth` or `fixedHeight` could cause the canvas to be cropped if less than the size of the Text itself (thanks @rexrainbow)
-* Changing the `radius` of an Arc Game Object wouldn't update the size, causing origin issues. It now updates the size and origin correctly in WebGL. Fix #4542 (thanks @@PhaserEditor2D)
-* Setting `padding` in a Text style configuration object would cause an error about calling split on undefined. Padding can now be applied both in the config and via `setPadding`.
-* `Tilemap.createBlankDynamicLayer` would fail if you provided a string for the tileset as the base tile width and height were incorrectly read from the tileset argument. Fix #4495 (thanks @jppresents)
-* `Tilemap.createDynamicLayer` would fail if you called it without setting the `x` and `y` arguments, even though they were flagged as being optional. Fix #4508 (thanks @jackfreak)
-* `RenderTexture.draw` didn't work if no `x` and `y` arguments were provided, even though they are optional, due to a problem with the way the frame cut values were added. The class has been refactored to prevent this, fixing issues like `RenderTexture.erase` not working with Groups. Fix #4528 (thanks @jbgomez21 @telinc1)
-* The `Grid` Game Object wouldn't render in Canvas mode at all. Fix #4585 (thanks @fyyyyy)
-* If you had a `Graphics` object in the display list immediately after an object with a Bitmap Mask it would throw an error `Uncaught TypeError: Cannot set property 'TL' of undefined`. Fix #4581 (thanks @Petah @Loonride)
-* Calling Arcade Physics `Body.reset` on a Game Object that doesn't have any bounds, like a Container, would throw an error about being unable to access `getTopLeft`. If this is the case, it will now set the position to the given x/y values (thanks Jazz)
-* All of the `Tilemaps.Parsers.Tiled` static functions are now available to be called directly. Fix #4318 (thanks @jestarray)
-* `Arcade.StaticBody.setSize` now centers the body correctly, as with the other similar methods. Fix #4213 (thanks @samme)
-* Setting `random: false` in a Particle Emitter config option no longer causes it to think random is true (thanks @samme)
-* `Zone.setSize` didn't update the displayOrigin, causing touch events to be inaccurate as the origin was out. Fix #4131 (thanks @rexrainbow)
-* `Tween.restart` wouldn't restart the tween properly. Fix #4594 (thanks @NokFrt)
-* Looped Tween Timelines would mess-up the tween values on every loop repeat, causing the loop to fail. They now loop correctly due to a fix in the Tween.play method. Fix #4558 (thanks @peteroravec)
-* `Timeline.setTimeScale` would only impact the Timeline loop and completion delays, not the actively running Tweens. It now scales the time for all child tweens as well. Fix #4164 (thanks @garethwhittaker)
+* BitmapText with a `maxWidth` set wouldn't update the text correctly if it was modified post-creation. You can now update the text and/or width independantly and it'll update correctly. Fix #4881 (thanks @oxguy3)
+* Text objects will no longer add any white-space when word-wrapping if the last line is only one word long. Fix #4867 (thanks @gaamoo @rexrainbow)
+* When `Game.destroy` is running, Scenes are now destroyed _before_ plugins, avoiding bugs when closing down plugins and deleting Render Textures. Fix #4849 #4876 (thanks @rexrainbow @siyuanqiao)
+* The `Mesh` and `Quad` Game Objects have had the `GetBounds` component removed as it cannot operate on a Mesh as they don't have origins. Fix #4902 (thanks @samme)
+* Setting `lineSpacing` in the Text Game Object style config would set the value but not apply it to the Text, leaving you to call `updateText` yourself. If set, it's now applied on instantiation. Fix #4901 (thanks @FantaZZ)
+* External calls to the Fullscreen API using `element.requestFullscreen()` would be blocked by the Scale Manager. The Scale Manager will no longer call `stopFullScreen` should it be triggered outside of Phaser (thanks @AdamXA)
+* The `Tilemaps.Tile.tint` property wasn't working correctly as it expected the colors in the wrong order (BGR instead of RGB). It will now expect them in the correct RGB order (thanks @Aedalus @plissken2013es)
+* The `ScaleManager.destroy` method wasn't being called when the Game `DESTROY` event was dispatched, causing minor gc to build up. The destroy method will now be called properly on game destruction. Fix #4944 (thanks @sunshineuoow)
+* `FacebookInstantGamesPlugin.showAd` and `showVideo` will now break out of the ad iteration search once a valid ad has been found and called. Previously, it would carry on interating if the async didn't complete quickly. Fix #4888 (thanks @east62687)
+* When playing an Animation, if you were to play another, then pause it, then play another the internal `_paused` wouldn't get reset, preventing you from them pausing the animations from that point on. You can now play and pause animations at will. Fix #4835 (thanks @murteira)
+* In `Actions.GridAlign` if you set `width` to -1 it would align the items vertically, instead of horizontally. It now aligns them horizontally if `width` is set, or vertically if `height` is set. Fix #4899 (thanks @BenjaVR)
+* A `PathFollower` with a very short duration would often not end in the correct place, which is the very end of the Path, due to the tween handling the movement not running one final update when the tween was complete. It will now always end at the final point of the path, no matter how short the duration. Fix #4950 (thanks @bramp)
+* A `DOMElement` would still remain visible even if the Scene in which it belongs to was sent to sleep. A sleeping Scene shouldn't render anything. DOM Elements will now respond to sleep and wake events from their parent Scene. Fix #4870 (thanks @peonmodel)
+* If a config object was passed to `MultiAtlasFile` it expected the atlas URL to be in the `url` property, however the docs and file config expected it in `atlasURL`. You can now use either of these properties to declare the url. Fix #4815 (thanks @xense)
 
 ### Examples, Documentation and TypeScript
 
 My thanks to the following for helping with the Phaser 3 Examples, Docs and TypeScript definitions, either by reporting errors, fixing them or helping author the docs:
 
-@PhaserEditor2D @samme @Nallebeorn @Punkiebe @rootasjey @Sun0fABeach
+@fselcukcan Bambosh @louisth @hexus @javigaralva @samme @BeLi4L @jcyuan @javigaralva @T-Grave @bramp @Chnapy @dranitski @RollinSafary @xense
+
+The Matter TypeScript defs have been updated to include lots of missing classes, removed some redundant elements and general fixes. The Phaser TypeScript defs now reference the Matter defs directly and no longer try to parse them from the JSDocs. This allows the `MatterJS` namespace to work in TypeScript projects without any compilation warnings.
+
+The Spine Plugin now has new TypeScript defs in the `types` folder thanks to @supertommy
 
 Please see the complete [Change Log](https://github.com/photonstorm/phaser/blob/master/CHANGELOG.md) for previous releases.
 
@@ -565,8 +618,8 @@ All rights reserved.
 
 "Above all, video games are meant to be just one thing: fun. Fun for everyone." - Satoru Iwata
 
-[get-js]: https://github.com/photonstorm/phaser/releases/download/v3.18.1/phaser.js
-[get-minjs]: https://github.com/photonstorm/phaser/releases/download/v3.18.1/phaser.min.js
+[get-js]: https://github.com/photonstorm/phaser/releases/download/v3.22.0/phaser.js
+[get-minjs]: https://github.com/photonstorm/phaser/releases/download/v3.22.0/phaser.min.js
 [clone-http]: https://github.com/photonstorm/phaser.git
 [clone-ssh]: git@github.com:photonstorm/phaser.git
 [clone-ghwin]: github-windows://openRepo/https://github.com/photonstorm/phaser

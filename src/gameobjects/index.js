@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -35,10 +35,12 @@ var GameObjects = {
     PathFollower: require('./pathfollower/PathFollower'),
     RenderTexture: require('./rendertexture/RenderTexture'),
     RetroFont: require('./bitmaptext/RetroFont'),
+    Rope: require('./rope/Rope'),
     Sprite: require('./sprite/Sprite'),
     Text: require('./text/static/Text'),
     TileSprite: require('./tilesprite/TileSprite'),
     Zone: require('./zone/Zone'),
+    Video: require('./video/Video'),
 
     //  Shapes
 
@@ -69,11 +71,13 @@ var GameObjects = {
         Particles: require('./particles/ParticleManagerFactory'),
         PathFollower: require('./pathfollower/PathFollowerFactory'),
         RenderTexture: require('./rendertexture/RenderTextureFactory'),
+        Rope: require('./rope/RopeFactory'),
         Sprite: require('./sprite/SpriteFactory'),
         StaticBitmapText: require('./bitmaptext/static/BitmapTextFactory'),
         Text: require('./text/static/TextFactory'),
         TileSprite: require('./tilesprite/TileSpriteFactory'),
         Zone: require('./zone/ZoneFactory'),
+        Video: require('./video/VideoFactory'),
 
         //  Shapes
         Arc: require('./shape/arc/ArcFactory'),
@@ -98,11 +102,13 @@ var GameObjects = {
         Image: require('./image/ImageCreator'),
         Particles: require('./particles/ParticleManagerCreator'),
         RenderTexture: require('./rendertexture/RenderTextureCreator'),
+        Rope: require('./rope/RopeCreator'),
         Sprite: require('./sprite/SpriteCreator'),
         StaticBitmapText: require('./bitmaptext/static/BitmapTextCreator'),
         Text: require('./text/static/TextCreator'),
         TileSprite: require('./tilesprite/TileSpriteCreator'),
-        Zone: require('./zone/ZoneCreator')
+        Zone: require('./zone/ZoneCreator'),
+        Video: require('./video/VideoCreator')
     }
 
 };

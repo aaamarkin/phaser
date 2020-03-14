@@ -1,7 +1,7 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
  * @author       Felipe Alfonso <@bitnenfer>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -171,7 +171,9 @@ var ForwardDiffuseLightPipeline = new Class({
             renderer.setFloat1(program, lightName + 'intensity', light.intensity);
             renderer.setFloat1(program, lightName + 'radius', light.radius);
         }
-        
+
+        this.currentNormalMapRotation = null;
+
         return this;
     },
 
@@ -248,7 +250,14 @@ var ForwardDiffuseLightPipeline = new Class({
         }
         else if (gameObject.tileset)
         {
-            normalTexture = gameObject.tileset.image.dataSource[0];
+            if (Array.isArray(gameObject.tileset))
+            {
+                normalTexture = gameObject.tileset[0].image.dataSource[0];
+            }
+            else
+            {
+                normalTexture = gameObject.tileset.image.dataSource[0];
+            }
         }
 
         if (!normalTexture)
@@ -438,25 +447,35 @@ var ForwardDiffuseLightPipeline = new Class({
      */
     setNormalMapRotation: function (rotation)
     {
-        var inverseRotationMatrix = this.inverseRotationMatrix;
-
-        if (rotation)
+        if (rotation !== this.currentNormalMapRotation || this.batches.length === 0)
         {
-            var rot = -rotation;
-            var c = Math.cos(rot);
-            var s = Math.sin(rot);
+            if (this.batches.length > 0)
+            {
+                this.flush();
+            }
 
-            inverseRotationMatrix[1] = s;
-            inverseRotationMatrix[3] = -s;
-            inverseRotationMatrix[0] = inverseRotationMatrix[4] = c;
-        }
-        else
-        {
-            inverseRotationMatrix[0] = inverseRotationMatrix[4] = 1;
-            inverseRotationMatrix[1] = inverseRotationMatrix[3] = 0;
-        }
+            var inverseRotationMatrix = this.inverseRotationMatrix;
 
-        this.renderer.setMatrix3(this.program, 'uInverseRotationMatrix', false, inverseRotationMatrix);
+            if (rotation)
+            {
+                var rot = -rotation;
+                var c = Math.cos(rot);
+                var s = Math.sin(rot);
+
+                inverseRotationMatrix[1] = s;
+                inverseRotationMatrix[3] = -s;
+                inverseRotationMatrix[0] = inverseRotationMatrix[4] = c;
+            }
+            else
+            {
+                inverseRotationMatrix[0] = inverseRotationMatrix[4] = 1;
+                inverseRotationMatrix[1] = inverseRotationMatrix[3] = 0;
+            }
+
+            this.renderer.setMatrix3(this.program, 'uInverseRotationMatrix', false, inverseRotationMatrix);
+
+            this.currentNormalMapRotation = rotation;
+        }
     },
 
     /**

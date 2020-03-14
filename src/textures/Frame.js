@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -707,16 +707,18 @@ var Frame = new Class({
     },
 
     /**
-     * Destroys this Frames references.
+     * Destroys this Frame by nulling its reference to the parent Texture and and data objects.
      *
      * @method Phaser.Textures.Frame#destroy
      * @since 3.0.0
      */
     destroy: function ()
     {
-        this.texture = null;
-
         this.source = null;
+        this.texture = null;
+        this.glTexture = null;
+        this.customData = null;
+        this.data = null;
     },
 
     /**

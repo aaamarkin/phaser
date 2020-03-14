@@ -1,6 +1,6 @@
 /**
  * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2019 Photon Storm Ltd.
+ * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 
@@ -27,6 +27,7 @@ var CreateInteractiveObject = function (gameObject, hitArea, hitAreaCallback)
         gameObject: gameObject,
 
         enabled: true,
+        alwaysEnabled: false,
         draggable: false,
         dropZone: false,
         cursor: false,
